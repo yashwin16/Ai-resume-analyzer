@@ -41,7 +41,7 @@ const upload = () => {
             companyName,jobTitle,jobDescription,
             feedback:''
         }
-        await kv.set(`resume: ${uuid}`,JSON.stringify(data));
+        await kv.set(`resume:${uuid}`,JSON.stringify(data));
         setStatusText('Analyzing...');
 
         const feedback=await ai.feedback(
@@ -56,6 +56,7 @@ const upload = () => {
         await kv.set(`resume:${uuid}`,JSON.stringify(data));
         setStatusText('Analysis Complete,Redirecting...');
         console.log(data);
+        navigate(`/resume/${uuid}`);
     }
 
     const handleSubmit=(e:FormEvent<HTMLFormElement>)=>{
