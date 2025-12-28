@@ -8,6 +8,9 @@ let pdfjsLib: any = null;
 let loadPromise: Promise<any> | null = null;
 
 async function loadPdfJs(): Promise<any> {
+  if (typeof window === "undefined") {
+    throw new Error("PDF.js can only run in the browser");
+  }
   if (pdfjsLib) return pdfjsLib;
   if (loadPromise) return loadPromise;
 
@@ -24,6 +27,9 @@ export async function convertPdfToImage(
   file: File
 ): Promise<PdfConversionResult> {
   try {
+    if (typeof window === "undefined") {
+      throw new Error("convertPdfToImage called on server");
+    }
     if (file.type !== "application/pdf") {
       throw new Error("Uploaded file is not a PDF");
     }
