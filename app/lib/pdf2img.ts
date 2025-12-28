@@ -14,11 +14,14 @@ async function loadPdfJs(): Promise<any> {
   if (pdfjsLib) return pdfjsLib;
   if (loadPromise) return loadPromise;
 
-  loadPromise = import("pdfjs-dist/legacy/build/pdf.mjs").then((lib) => {
-    lib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
-    pdfjsLib = lib;
-    return lib;
-  });
+  loadPromise = (async()=>{
+    const pdfjs=await import("pdfjs-dist")
+    const workerSrc = await import("pdfjs-dist/build/pdf.worker.min?url");
+    
+    pdfjs.GlobalWorkerOptions.workerSrc = workerSrc.default;
+    pdfjsLib = pdfjs;
+    return pdfjs;
+  })();
 
   return loadPromise;
 }
