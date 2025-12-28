@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import ATS from "~/components/ATS";
+import ATS from "~/components/Ats";
 import Details from "~/components/Details";
 import Summary from "~/components/Summary";
 import { usePuterStore } from "~/lib/puter";
@@ -9,7 +9,7 @@ export const meta= ()=> ([
     {title:"Resumind | Review"},
     {name:"description",content:"Detailed Overview of your Resume"},
 ])
-const resume = () => {
+const Resume = () => {
   const {auth,isLoading,fs,kv} = usePuterStore();
   const {id} = useParams();
   const [imageUrl,setImageUrl] = useState('');
@@ -77,4 +77,4 @@ const resume = () => {
   )
 }
 
-export default resume
+export default Resume

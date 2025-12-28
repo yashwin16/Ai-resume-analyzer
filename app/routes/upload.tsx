@@ -7,7 +7,7 @@ import { usePuterStore } from "~/lib/puter";
 import { generateUUID } from "~/lib/util";
 import { prepareInstructions } from "../../constants/index";
 
-const upload = () => {
+const Upload = () => {
     const {auth,isLoading,fs,ai,kv} = usePuterStore();
     const navigate = useNavigate();
     const [isProcessing,setIsProcessing] = useState(false);
@@ -113,4 +113,4 @@ return (
 )
 }
 
-export default upload
+export default Upload

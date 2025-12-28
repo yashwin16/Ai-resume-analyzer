@@ -6,7 +6,7 @@ export const meta= ()=> ([
     {title:"Resumind | Auth"},
     {name:"description",content:"Log into your Account"},
 ])
-const auth = () => {
+const Auth = () => {
     const {isLoading,auth}=usePuterStore();
     const location = useLocation();
     const next = location.search.split('next=')[1];
@@ -29,11 +29,9 @@ return (
                         </button>
                     ) :(
                         <>
-                        {auth.isAuthenticated ? (
-                            <button className="auth-button" onClick={auth.signOut}><p>Log Out</p></button>
-                        ):(
+                        
                             <button className="auth-button" onClick={auth.signIn}><p>Log In</p></button>
-                        )}
+                        
                         </>
                     )}
                 </div>
@@ -43,4 +41,4 @@ return (
 )
 }
 
-export default auth
+export default Auth
