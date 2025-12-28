@@ -15,10 +15,10 @@ async function loadPdfJs(): Promise<any> {
   if (loadPromise) return loadPromise;
 
   loadPromise = (async()=>{
-    const pdfjs=await import("pdfjs-dist")
-    const workerSrc = await import("pdfjs-dist/build/pdf.worker.min?url");
+    const pdfjs=await import("pdfjs-dist/legacy/build/pdf.mjs")
+    const workerUrl = new URL("pdfjs-dist/legacy/build/pdf.worker.min.mjs",import.meta.url).href;
     
-    pdfjs.GlobalWorkerOptions.workerSrc = workerSrc.default;
+    pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
     pdfjsLib = pdfjs;
     return pdfjs;
   })();
