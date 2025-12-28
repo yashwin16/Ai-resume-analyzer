@@ -9,7 +9,7 @@ export default defineConfig({
     exclude: ["pdfjs-dist"], // prevent pre-bundling
   },
   ssr: {
-    noExternal: ["pdfjs-dist"], // skip server-side bundling
+    noExternal: ["pdfjs-dist", "react-router", "tailwind-merge", "zustand"], // skip server-side bundling
   },
   assetsInclude: ["**/*.min.js"], // include pdf.worker.min.js
 });
