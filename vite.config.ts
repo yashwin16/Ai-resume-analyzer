@@ -6,11 +6,22 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
   optimizeDeps: {
-    exclude: ["pdfjs-dist"], // prevent pre-bundling
+    exclude: [
+      "pdfjs-dist",
+      "react-dropzone",
+      "zustand",
+      "prop-types",
+      "tailwind-merge",
+    ],
   },
   ssr: {
-    noExternal: ["pdfjs-dist", "react-router", "tailwind-merge", "zustand"], // skip server-side bundling
+    noExternal: [
+      "pdfjs-dist",
+      "react-dropzone",
+      "zustand",
+      "prop-types",
+      "tailwind-merge",
+    ],
   },
-  assetsInclude: ["**/*.min.js"], // include pdf.worker.min.js
+  assetsInclude: ["**/*.min.js"], // allow pdf.worker.min.js
 });
-
